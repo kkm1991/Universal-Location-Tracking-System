@@ -15,7 +15,9 @@ export async function GET(request: Request) {
 
   // ── Missing code ────────────────────────────────────────────────────────
   if (!code) {
-    return NextResponse.redirect(`${origin}/login?error=no-code`);
+    const errorUrl = new URL('/login', request.url);
+    errorUrl.searchParams.set('error', 'no-code');
+    return NextResponse.redirect(errorUrl);
   }
 
   // ── Exchange code for session ───────────────────────────────────────────
@@ -24,10 +26,12 @@ export async function GET(request: Request) {
 
   if (error) {
     console.error('[auth/callback] Code exchange failed:', error.message);
-    const details = encodeURIComponent(error.message);
-    return NextResponse.redirect(`${origin}/login?error=auth&details=${details}`);
+    const errorUrl = new URL('/login', request.url);
+    errorUrl.searchParams.set('error', 'auth');
+    errorUrl.searchParams.set('details', error.message);
+    return NextResponse.redirect(errorUrl);
   }
 
   // ── Success – send to dashboard ─────────────────────────────────────────
-  return NextResponse.redirect(`${origin}/dashboard`);
+  return NextResponse.redirect(new URL('/dashboard', request.url));
 }
