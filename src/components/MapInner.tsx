@@ -114,11 +114,10 @@ export default function MapInner({ markers, center = [16.8661, 96.1951], zoom = 
         zoomControl={true}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-          maxZoom={20}
+          attribution='Tiles &copy; Esri &mdash; Source: Esri, iPC, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+          maxZoom={19}
           keepBuffer={20}
-          crossOrigin="anonymous"
         />
         
         {markers.map((marker) => (
