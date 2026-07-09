@@ -86,10 +86,6 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
               src="/logo.png" 
               alt="Brand Logo" 
               className="h-full w-full object-contain"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.nextElementSibling?.classList.remove('hidden');
-              }}
             />
             <div className="hidden flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#6366f1] to-[#22d3ee] shadow-lg shadow-[#6366f1]/25">
               <svg

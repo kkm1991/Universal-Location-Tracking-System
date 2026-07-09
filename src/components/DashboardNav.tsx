@@ -270,10 +270,6 @@ export default function DashboardNav({ user }: { user: NavUser }) {
                 src="/logo.png" 
                 alt="Brand Logo" 
                 className="h-full w-full object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                }}
               />
               <div className="hidden flex h-full w-full flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-400">
                 <svg
